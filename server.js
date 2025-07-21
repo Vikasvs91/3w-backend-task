@@ -10,9 +10,14 @@ app.use(express.json());
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB Connected"));
 
-// ✅ Default route for http://localhost:5000/
+// ✅ Default route for testing root
 app.get("/", (req, res) => {
   res.send("Hello from backend!");
+});
+
+// ✅ Test route for Render deployment
+app.get("/api/test", (req, res) => {
+  res.send("API is working ✅");
 });
 
 // API routes
