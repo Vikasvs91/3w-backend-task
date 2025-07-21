@@ -37,7 +37,7 @@ router.get("/leaderboard", async (req, res) => {
     const users = await User.find().sort({ totalPoints: -1 });
     res.status(200).json(users);
   } catch (error) {
-    console.error("Error in GET /leaderboard:", error.message, error.stack);
+    console.error("Error in GET /leaderboard:", error.message);
     res.status(500).json({ error: "Server error while fetching leaderboard" });
   }
 });
