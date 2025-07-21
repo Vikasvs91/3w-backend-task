@@ -8,7 +8,12 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB Connected"));
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err.message);
+  });
 
 // ✅ Default route for testing root
 app.get("/", (req, res) => {
